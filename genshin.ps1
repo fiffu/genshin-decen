@@ -41,8 +41,8 @@ $gameExe = "$genshinInstallFolder\Genshin Impact Game\GenshinImpact.exe"
 
 
 if (-NOT $runGameElseMakeShortcut) {
-    # When invoking this script without args, this block will create a .lnk
-    # that calls this script again with -runGameElseMakeShortcut set to true.
+    # When invoking this script without args, this block will create a .lnk that
+    # calls this script again with the -runGameElseMakeShortcut flag.
 
     $shortcutPath = "$PSScriptRoot\$shortcutName"
 
@@ -55,7 +55,7 @@ if (-NOT $runGameElseMakeShortcut) {
     $Shortcut.Arguments = "-ExecutionPolicy unrestricted -file `"$PSCommandPath`" -runGameElseMakeShortcut"
     $Shortcut.Save()
     # Target should be:
-    # C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -ExecutionPolicy unrestricted -file 'E:\genshin.ps1' -runGameElseMakeShortcut
+    # ...\powershell.exe -ExecutionPolicy unrestricted -file "E:\genshin.ps1" -runGameElseMakeShortcut
 
     if ($removeCensor) {
         # Now force the lnk to have run as admin. When the lnk opens, it will
