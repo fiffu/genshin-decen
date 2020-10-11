@@ -70,9 +70,9 @@ if (-NOT $runGameElseMakeShortcut) {
 } else {
 
     # Drop the censor folder if it exists
-    $censorDir = "$genshinInstallFolder\Genshin Impact Game\GenshinImpact_Data\Persistent\AssetBundles\blocks"
-    if ($removeCensor -and (Test-Path $censorDir)) {
-        Remove-Item $censorDir -Recurse -Force
+    $censorFile = "$genshinInstallFolder\Genshin Impact Game\GenshinImpact_Data\Persistent\AssetBundles\blocks\00\29342328.blk"
+    if ($removeCensor -and (Test-Path $censorFile)) {
+        Remove-Item $censorFile -Force
     }
 
     # Start game
