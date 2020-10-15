@@ -6,11 +6,14 @@
    Ensure that `$genshinInstallFolder` points to the folder where Genshin Impact
    is installed. Also, you can set `$removeCensor` to `$false` if you don't want
    the censorship folder to be automatically deleted when the game starts.
+   
+   * As of writing - if you don't want the automatic deleting, then there's no
+   point using this script.
 
 2. Right-click on the script (`genshin.ps1`) and select 'Run with PowerShell'.
 
 3. You should see a shortcut file appear. You can double-click on it to start
-   Genshin Impact.
+   Genshin Impact. You can also right-click to pin it to your Start menu.
 
 4. If you have $removeCensor set to $true, a prompt will appear asking 
    "Do you want to allow this app to make changes to your device?"
