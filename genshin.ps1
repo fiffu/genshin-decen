@@ -29,8 +29,13 @@ param( [switch]$runGameElseMakeShortcut = $false )
 # Folder where Genshin Impact is installed. There should be no trailing \
 $genshinInstallFolder = "C:\Program Files\Genshin Impact"
 
+# Set to $false to start game without starting the launcher
+$useLauncher = $true
+
+# Set to $false if you don't want to remove the censorship
 $removeCensor = $true
 
+# Name of the shortcut generated
 $shortcutName = "RunGenshinImpact.lnk"
 
 # ------------------------------------------------
@@ -73,6 +78,11 @@ if (-NOT $runGameElseMakeShortcut) {
     $censorFile = "$genshinInstallFolder\Genshin Impact Game\GenshinImpact_Data\Persistent\AssetBundles\blocks\00\29342328.blk"
     if ($removeCensor -and (Test-Path $censorFile)) {
         Remove-Item $censorFile -Force
+    }
+
+    if (Test-Path $censorFile) {
+        Write-Output "Failed to remove $censorFile"
+        Pause
     }
 
     # Start game
