@@ -42,7 +42,10 @@ $shortcutName = "RunGenshinImpact.lnk"
 
 
 
-$gameExe = "$genshinInstallFolder\Genshin Impact Game\GenshinImpact.exe"
+$exePath = "$genshinInstallFolder\Genshin Impact Game\GenshinImpact.exe"
+if ($useLauncher) {
+    $exePath = "$genshinInstallFolder\launcher.exe"
+}
 
 
 if (-NOT $runGameElseMakeShortcut) {
@@ -54,7 +57,7 @@ if (-NOT $runGameElseMakeShortcut) {
     # Create shortcut - https://stackoverflow.com/a/9701907
     $WshShell = New-Object -comObject WScript.Shell
     $Shortcut = $WshShell.CreateShortcut($shortcutPath)
-    $Shortcut.IconLocation = "$gameExe, 0"
+    $Shortcut.IconLocation = "$exePath, 0"
 
     $Shortcut.TargetPath = "powershell.exe"
     $Shortcut.Arguments = "-ExecutionPolicy unrestricted -file `"$PSCommandPath`" -runGameElseMakeShortcut"
@@ -86,6 +89,6 @@ if (-NOT $runGameElseMakeShortcut) {
     }
 
     # Start game
-    Start-Process $gameExe
+    Start-Process $exePath
 
 }
